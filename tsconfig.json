@@ -15,7 +15,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@mars/front-wrapper": ["libs/front-wrapper/src/index.ts"],
+      "@mars/fields": ["libs/fields/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

@@ -10,5 +10,19 @@
     "tslint.json": "*",
     "nx.json": "*"
   },
-  "projects": {}
+  "projects": {
+    "reception": {
+      "tags": []
+    },
+    "reception-e2e": {
+      "tags": [],
+      "implicitDependencies": ["reception"]
+    },
+    "front-wrapper": {
+      "tags": []
+    },
+    "fields": {
+      "tags": []
+    }
+  }
 }
