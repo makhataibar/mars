@@ -13,7 +13,7 @@ export enum FieldIdentifier {
 }
 export interface Field {
   identifier: FieldIdentifier;
-  field: ComponentType<TextFieldProps>;
+  field: ComponentType<FieldPropsInterface<TextFieldProps | SelectProps>>;
   defaultProps: FieldPropsInterface<TextFieldProps> | SelectProps;
 }
 
@@ -22,6 +22,7 @@ export const fields: Field[] = [
     identifier: FieldIdentifier.TextField,
     field: TextField,
     defaultProps: {
+      fieldName: FieldIdentifier.TextField,
       componentProps: {
         label: 'Введите текст по умолчанию',
       },
@@ -31,6 +32,7 @@ export const fields: Field[] = [
     identifier: FieldIdentifier.Select,
     field: Select,
     defaultProps: {
+      fieldName: FieldIdentifier.Select,
       componentProps: {
         label: 'Выберите значение по умолчанию'
       },
