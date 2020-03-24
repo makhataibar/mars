@@ -9,6 +9,9 @@ export const theme = createMuiTheme({
     },
     MuiContainer: {
       maxWidth: false
+    },
+    MuiButton:{
+      variant: 'contained'
     }
   },
   overrides: {
