@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { AddComponentStepper, Step } from './add-component.stepper';
-import { ComponentList } from './component-list';
+import { ComponentSelectStep } from './component-select.step';
 import { FieldIdentifier } from '../fields/fields';
+import { ComponentFillStep } from './component-fill.step';
+import { ComponentInterface } from './component.interface';
 
 /* eslint-disable-next-line */
 export interface AddComponentProps {}
@@ -11,18 +13,29 @@ export const AddComponent = (props: AddComponentProps) => {
     FieldIdentifier.TextField
   );
 
-  const steps: [Step] = [
+  const handleFill = (component: ComponentInterface) => {
+    console.log(component);
+  };
+
+  const handleFinish = () => {};
+
+  const steps: Step[] = [
     {
       title: 'Выберите компонент',
       component: (
-        <ComponentList
+        <ComponentSelectStep
           value={selectedComponent}
           onChange={setSelectedComponent}
         />
       )
     },
-    { title: 'Заполните значения компонента' }
+    {
+      title: 'Заполните компонент',
+      component: (
+        <ComponentFillStep field={selectedComponent} onFill={handleFill} />
+      )
+    }
   ];
 
-  return <AddComponentStepper steps={steps} />;
+  return <AddComponentStepper steps={steps} onFinish={handleFinish} />;
 };

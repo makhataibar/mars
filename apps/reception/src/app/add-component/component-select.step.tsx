@@ -2,12 +2,12 @@ import React from 'react';
 import { Grid, Radio } from '@material-ui/core';
 import { FieldIdentifier, fields } from '../fields/fields';
 
-export interface ComponentListProps {
+export interface ComponentSelectStepProps {
   onChange: (field: FieldIdentifier) => void;
   value: FieldIdentifier;
 }
 
-export const ComponentList = (props: ComponentListProps) => {
+export const ComponentSelectStep = (props: ComponentSelectStepProps) => {
   return (
     <Grid container spacing={2} direction="column">
       {fields.map(({ field: Field, ...value }, index) => (

@@ -7,7 +7,7 @@ export interface Step {
 }
 export interface AddComponentStepperProps {
   onFinish: () => void;
-  steps: [Step];
+  steps: Step[];
 }
 enum ToggleStepMode {
   Prev = 'PREVIOUS',
