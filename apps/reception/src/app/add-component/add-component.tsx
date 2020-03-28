@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { AddComponentStepper, Step } from './add-component.stepper';
+import React, { useRef, useState } from 'react';
 import { ComponentSelectStep } from './component-select.step';
 import { FieldIdentifier } from '../fields/fields';
+import { Step, Stepper, useStepper } from '@mars/stepper';
+import { ComponentsFormProps } from './components-initial-values';
 import { ComponentFillStep } from './component-fill.step';
-import { ComponentInterface } from './component.interface';
 
 /* eslint-disable-next-line */
 export interface AddComponentProps {}
@@ -12,12 +12,11 @@ export const AddComponent = (props: AddComponentProps) => {
   const [selectedComponent, setSelectedComponent] = useState<FieldIdentifier>(
     FieldIdentifier.TextField
   );
+  const componentFillStepRef = useRef();
 
-  const handleFill = (component: ComponentInterface) => {
-    console.log(component);
+  const handleFill = (values: ComponentsFormProps[FieldIdentifier]) => {
+    console.log(values);
   };
-
-  const handleFinish = () => {};
 
   const steps: Step[] = [
     {
@@ -32,10 +31,26 @@ export const AddComponent = (props: AddComponentProps) => {
     {
       title: 'Заполните компонент',
       component: (
-        <ComponentFillStep field={selectedComponent} onFill={handleFill} />
+        <ComponentFillStep
+          innerRef={componentFillStepRef}
+          field={selectedComponent}
+          onFill={handleFill}
+        />
       )
     }
   ];
+  const [activeStep, handleToggleStep] = useStepper(steps.length);
 
-  return <AddComponentStepper steps={steps} onFinish={handleFinish} />;
+  const handleFinish = () => {
+    componentFillStepRef.current?.handleSubmit();
+  };
+
+  return (
+    <Stepper
+      steps={steps}
+      onFinish={handleFinish}
+      activeStep={activeStep}
+      onToggleStep={handleToggleStep}
+    />
+  );
 };

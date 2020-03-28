@@ -17,7 +17,9 @@
     "baseUrl": ".",
     "paths": {
       "@mars/front-wrapper": ["libs/front-wrapper/src/index.ts"],
-      "@mars/fields": ["libs/fields/src/index.ts"]
+      "@mars/fields": ["libs/fields/src/index.ts"],
+      "@mars/stepper": ["libs/stepper/src/index.ts"],
+      "@mars/yup-i18n": ["libs/yup-i18n/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

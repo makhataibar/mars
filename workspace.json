@@ -165,6 +165,62 @@
           }
         }
       }
+    },
+    "stepper": {
+      "root": "libs/stepper",
+      "sourceRoot": "libs/stepper/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/stepper/.eslintrc",
+            "tsConfig": [
+              "libs/stepper/tsconfig.lib.json",
+              "libs/stepper/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/stepper/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stepper/jest.config.js",
+            "tsConfig": "libs/stepper/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "yup-i18n": {
+      "root": "libs/yup-i18n",
+      "sourceRoot": "libs/yup-i18n/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/yup-i18n/.eslintrc",
+            "tsConfig": [
+              "libs/yup-i18n/tsconfig.lib.json",
+              "libs/yup-i18n/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/yup-i18n/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/yup-i18n/jest.config.js",
+            "tsConfig": "libs/yup-i18n/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

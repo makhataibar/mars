@@ -35,7 +35,7 @@ export const AddComponentDialog = () => {
         Добавить компонент
       </Fab>
       <Dialog
-        maxWidth="lg"
+        maxWidth="md"
         fullWidth
         open={openDialog}
         onClose={() => setOpenDialog(false)}

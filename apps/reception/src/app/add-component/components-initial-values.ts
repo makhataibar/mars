@@ -1,4 +1,6 @@
 import { FieldIdentifier } from '../fields/fields';
+import * as yup from 'yup';
+import { ObjectSchema } from 'yup';
 
 export interface TextFieldInitialValues {
   label: string;
@@ -6,14 +8,27 @@ export interface TextFieldInitialValues {
   isRequired: boolean;
 }
 
-export type ComponentsInitialValues = {
-  [key in FieldIdentifier]: TextFieldInitialValues;
+export type ComponentsInitialValues = TextFieldInitialValues;
+export interface ComponentFormProps {
+  initialValues: ComponentsInitialValues;
+  validationSchema: ObjectSchema<ComponentsInitialValues>;
+}
+
+export type ComponentsFormProps = {
+  [key in FieldIdentifier]: ComponentFormProps;
 };
 
-export const componentsInitialValues: ComponentsInitialValues = {
+export const componentsInitialValues: ComponentsFormProps = {
   [FieldIdentifier.TextField]: {
-    initialValue: '',
-    isRequired: true,
-    label: ''
+    initialValues: {
+      initialValue: '',
+      isRequired: true,
+      label: ''
+    },
+    validationSchema: yup.object<TextFieldInitialValues>({
+      isRequired: yup.boolean().required(),
+      initialValue: yup.string().notRequired(),
+      label: yup.string().required()
+    })
   }
 };

@@ -1,14 +1,19 @@
 import React from 'react';
 import { FieldIdentifier } from '../fields/fields';
+import { TextFieldFill } from './textfield.fill';
 
 export interface ComponentFillBuilderProps {
   field: FieldIdentifier;
 }
 
+export type ComponentFills = {
+  [key in FieldIdentifier]: () => JSX.Element;
+};
+export const componentFills: ComponentFills = {
+  [FieldIdentifier.TextField]: TextFieldFill
+};
+
 export const ComponentFillBuilder = (props: ComponentFillBuilderProps) => {
-  return (
-    <div>
-      <h1>Welcome to component-fill-builder component!</h1>
-    </div>
-  );
+  const ComponentFill = componentFills[props.field];
+  return <ComponentFill />;
 };

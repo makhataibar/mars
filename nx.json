@@ -23,6 +23,12 @@
     },
     "fields": {
       "tags": []
+    },
+    "stepper": {
+      "tags": []
+    },
+    "yup-i18n": {
+      "tags": []
     }
   }
 }
